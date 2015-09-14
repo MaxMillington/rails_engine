@@ -23,7 +23,7 @@ namespace :csv do
     csv_text = File.read('./public/CSV/items.csv')
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
-      Item.create(row.to_h)
+      Customer.create(row.to_h)
     end
   end
 
