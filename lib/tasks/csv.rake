@@ -47,7 +47,7 @@ namespace :csv do
     csv_text = File.read('./public/CSV/transactions.csv')
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
-      Transaction.create(row.to_h)
+      Transaction.create(row.to_h.except('credit_card_expiration_date'))
     end
   end
 end
