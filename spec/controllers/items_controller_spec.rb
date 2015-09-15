@@ -23,7 +23,7 @@ describe Api::V1::ItemsController do
     it 'returns a item' do
       merchant = Merchant.create(name: 'Max the Merchant')
       item = Item.create(name: 'Monkeys', description: 'Be very careful with these mischievous monkeys',
-                  unit_price: 12.5, merchant_id: merchant.id)
+                         unit_price: 12.5, merchant_id: merchant.id)
 
       get :show, id: item.id, format: :json
 
@@ -42,7 +42,7 @@ describe Api::V1::ItemsController do
       item = Item.create(name: 'Monkeys', description: 'Be very careful with these mischievous monkeys',
                          unit_price: 12.5, merchant_id: merchant.id)
       item2 = Item.create(name: 'Monkeys2', description: 'Be very careful with these mischievous monkeys',
-                         unit_price: 12.52, merchant_id: merchant2.id)
+                          unit_price: 12.52, merchant_id: merchant2.id)
 
 
       get :find, id: item.id, format: :json
@@ -144,6 +144,46 @@ describe Api::V1::ItemsController do
       merchant = JSON.parse(response.body)
 
       expect(merchant['name']).to eq('Max the Merchant')
+
+    end
+  end
+
+  context '#best day' do
+    it 'returns best day' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid", created_at: "2012-03-25 13:54:11" )
+      invoice2 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "paid", created_at: "2012-03-25 13:54:11")
+      invoice3 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "paid", created_at: "2012-02-25 13:54:11")
+      InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
+                         invoice_id: invoice.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
+                         invoice_id: invoice2.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
+                         invoice_id: invoice3.id, item_id: item.id)
+      Transaction.create(invoice_id: invoice.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice2.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice3.id,
+                         result: "success", credit_card_number: "1234343")
+
+      get :best_day, id: item.id, format: :json
+      expect(response).to have_http_status(:ok)
+
+
+      best_day = JSON.parse(response.body)
+
+      expect(best_day.first).to eq("2012-03-25 13:54:11")
 
     end
   end
