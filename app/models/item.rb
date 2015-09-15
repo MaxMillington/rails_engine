@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
   def best_day
     invoices.successful.group('invoices.created_at')
         .sum('quantity * unit_price').
-        sort_by {|x| x.last}.reverse.first
+        sort_by {|x| x.last}.reverse.first.first
   end
 
 end
