@@ -73,6 +73,9 @@ describe Api::V1::MerchantsController do
 
       items = JSON.parse(response.body)
       expect(items.count).to eq(1)
+
+      item = items.first
+      expect(item['name']).to eq('Monkeys')
     end
   end
 
@@ -99,6 +102,9 @@ describe Api::V1::MerchantsController do
 
       invoices = JSON.parse(response.body)
       expect(invoices.count).to eq(1)
+
+      invoice = invoices.first
+      expect(invoice['status']).to eq("paid")
     end
   end
 
@@ -125,6 +131,9 @@ describe Api::V1::MerchantsController do
 
       customers = JSON.parse(response.body)
       expect(customers.count).to eq(1)
+
+      customer = customers.first
+      expect(customer['first_name']).to eq("John")
     end
   end
 
@@ -150,6 +159,9 @@ describe Api::V1::MerchantsController do
 
       transactions = JSON.parse(response.body)
       expect(transactions.count).to eq(1)
+
+      transaction = transactions.first
+      expect(transaction['result']).to eq("success")
     end
   end
 end

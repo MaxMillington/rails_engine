@@ -14,14 +14,14 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-15T11:20:36-06:00">2015-09-15T11:20:36-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-15T11:30:08-06:00">2015-09-15T11:30:08-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.54%</span></span>
+    (<span class="covered_percent"><span class="green">98.56%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>37</b> files in total.
-    <b>685</b> relevant lines. 
-    <span class="green"><b>675</b> lines covered</span> and
+    <b>693</b> relevant lines. 
+    <span class="green"><b>683</b> lines covered</span> and
     <span class="red"><b>10</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -343,9 +343,9 @@
       <tr>
         <td class="strong"><a href="#a1df3745d3e057a1c8e629e8c44035e62b0cef1e" class="src_link" title="spec/controllers/merchants_controller_spec.rb">spec/controllers/merchants_controller_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>155</td>
-        <td>75</td>
-        <td>75</td>
+        <td>167</td>
+        <td>83</td>
+        <td>83</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -6591,8 +6591,8 @@
     <h3>spec/controllers/merchants_controller_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>75</b> relevant lines. 
-      <span class="green"><b>75</b> lines covered</span> and
+      <b>83</b> relevant lines. 
+      <span class="green"><b>83</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -7053,73 +7053,73 @@
         <li class="never" data-hits="" data-linenumber="76">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="77">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      item = items.first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="78">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(item[&#39;name&#39;]).to eq(&#39;Monkeys&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="77">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="79">
+        <li class="covered" data-hits="1" data-linenumber="82">
           <span class="hits">1</span>
           
           <code class="ruby">  context &#39;#invoices&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="83">
           <span class="hits">1</span>
           
           <code class="ruby">    it &#39;returns invoices&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="81">
+        <li class="covered" data-hits="1" data-linenumber="84">
           <span class="hits">1</span>
           
           <code class="ruby">      customer = Customer.create(first_name: &#39;John&#39;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">                                 last_name: &#39;McLaughlin&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="84">
+        <li class="covered" data-hits="1" data-linenumber="87">
           <span class="hits">1</span>
           
           <code class="ruby">      merchant = Merchant.create(name: &#39;Max the Merchant&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="85">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="86">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      invoice = Invoice.create(customer_id: customer.id,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="87">
-          
-          
-          <code class="ruby">                               merchant_id: merchant.id, status: &quot;paid&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="88">
@@ -7131,37 +7131,37 @@
         <li class="covered" data-hits="1" data-linenumber="89">
           <span class="hits">1</span>
           
-          <code class="ruby">      item = Item.create(name: &#39;Monkeys&#39;,</code>
+          <code class="ruby">      invoice = Invoice.create(customer_id: customer.id,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
           
           
-          <code class="ruby">                         description: &#39;Be careful with these mischievous monkeys.&#39;,</code>
+          <code class="ruby">                               merchant_id: merchant.id, status: &quot;paid&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="91">
           
           
-          <code class="ruby">                         unit_price: 67.99, merchant_id: merchant.id)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="92">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="93">
+        <li class="covered" data-hits="1" data-linenumber="92">
           <span class="hits">1</span>
           
-          <code class="ruby">      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,</code>
+          <code class="ruby">      item = Item.create(name: &#39;Monkeys&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby">                         description: &#39;Be careful with these mischievous monkeys.&#39;,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="94">
           
           
-          <code class="ruby">                                        invoice_id: invoice.id, item_id: item.id)</code>
+          <code class="ruby">                         unit_price: 67.99, merchant_id: merchant.id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="95">
@@ -7173,358 +7173,430 @@
         <li class="covered" data-hits="1" data-linenumber="96">
           <span class="hits">1</span>
           
-          <code class="ruby">      get :invoices, id: merchant.id, format: :json</code>
+          <code class="ruby">      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="97">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">                                        invoice_id: invoice.id, item_id: item.id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="98">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      expect(response).to have_http_status(:ok)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="99">
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="100">
+        <li class="covered" data-hits="1" data-linenumber="99">
           <span class="hits">1</span>
           
-          <code class="ruby">      invoices = JSON.parse(response.body)</code>
+          <code class="ruby">      get :invoices, id: merchant.id, format: :json</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="101">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(invoices.count).to eq(1)</code>
+          <code class="ruby">      expect(response).to have_http_status(:ok)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="102">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="103">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="104">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="105">
+        <li class="covered" data-hits="1" data-linenumber="103">
           <span class="hits">1</span>
           
-          <code class="ruby">  context &#39;#customers&#39; do</code>
+          <code class="ruby">      invoices = JSON.parse(response.body)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="104">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(invoices.count).to eq(1)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="105">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="106">
           <span class="hits">1</span>
           
-          <code class="ruby">    it &#39;returns customers&#39; do</code>
+          <code class="ruby">      invoice = invoices.first</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="107">
           <span class="hits">1</span>
           
-          <code class="ruby">      customer = Customer.create(first_name: &#39;John&#39;,</code>
+          <code class="ruby">      expect(invoice[&#39;status&#39;]).to eq(&quot;paid&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="108">
           
           
-          <code class="ruby">                                 last_name: &#39;McLaughlin&#39;)</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="109">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="110">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="110">
+        <li class="covered" data-hits="1" data-linenumber="111">
           <span class="hits">1</span>
           
-          <code class="ruby">      merchant = Merchant.create(name: &#39;Max the Merchant&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
-          <code class="ruby"></code>
+          <code class="ruby">  context &#39;#customers&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="112">
           <span class="hits">1</span>
           
-          <code class="ruby">      invoice = Invoice.create(customer_id: customer.id,</code>
+          <code class="ruby">    it &#39;returns customers&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="113">
-          
-          
-          <code class="ruby">                               merchant_id: merchant.id, status: &quot;paid&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="114">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="115">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      item = Item.create(name: &#39;Monkeys&#39;,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="116">
-          
-          
-          <code class="ruby">                         description: &#39;Be careful with these mischievous monkeys.&#39;,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="117">
-          
-          
-          <code class="ruby">                         unit_price: 67.99, merchant_id: merchant.id)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="118">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="119">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="120">
-          
-          
-          <code class="ruby">                                        invoice_id: invoice.id, item_id: item.id)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="121">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="122">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get :customers, id: merchant.id, format: :json</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="123">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="124">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      expect(response).to have_http_status(:ok)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="125">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="126">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      customers = JSON.parse(response.body)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="127">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      expect(customers.count).to eq(1)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="128">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="129">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="130">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="131">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  context &#39;#transactions&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="132">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    it &#39;returns transactions&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="133">
+        <li class="covered" data-hits="1" data-linenumber="113">
           <span class="hits">1</span>
           
           <code class="ruby">      customer = Customer.create(first_name: &#39;John&#39;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="134">
+        <li class="never" data-hits="" data-linenumber="114">
           
           
           <code class="ruby">                                 last_name: &#39;McLaughlin&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="135">
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="116">
           <span class="hits">1</span>
           
           <code class="ruby">      merchant = Merchant.create(name: &#39;Max the Merchant&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="136">
+        <li class="never" data-hits="" data-linenumber="117">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="137">
+        <li class="covered" data-hits="1" data-linenumber="118">
           <span class="hits">1</span>
           
           <code class="ruby">      invoice = Invoice.create(customer_id: customer.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="138">
+        <li class="never" data-hits="" data-linenumber="119">
           
           
           <code class="ruby">                               merchant_id: merchant.id, status: &quot;paid&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="139">
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="121">
           <span class="hits">1</span>
           
           <code class="ruby">      item = Item.create(name: &#39;Monkeys&#39;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="140">
+        <li class="never" data-hits="" data-linenumber="122">
           
           
           <code class="ruby">                         description: &#39;Be careful with these mischievous monkeys.&#39;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="141">
+        <li class="never" data-hits="" data-linenumber="123">
           
           
           <code class="ruby">                         unit_price: 67.99, merchant_id: merchant.id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="142">
+        <li class="never" data-hits="" data-linenumber="124">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="125">
           <span class="hits">1</span>
           
           <code class="ruby">      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="143">
+        <li class="never" data-hits="" data-linenumber="126">
           
           
           <code class="ruby">                                        invoice_id: invoice.id, item_id: item.id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="144">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      transaction = Transaction.create(invoice_id: invoice.id,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="145">
-          
-          
-          <code class="ruby">                         result: &quot;success&quot;, credit_card_number: &quot;1234343&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="146">
+        <li class="never" data-hits="" data-linenumber="127">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="147">
+        <li class="covered" data-hits="1" data-linenumber="128">
           <span class="hits">1</span>
           
-          <code class="ruby">      get :transactions, id: merchant.id, format: :json</code>
+          <code class="ruby">      get :customers, id: merchant.id, format: :json</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="148">
+        <li class="never" data-hits="" data-linenumber="129">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="149">
+        <li class="covered" data-hits="1" data-linenumber="130">
           <span class="hits">1</span>
           
           <code class="ruby">      expect(response).to have_http_status(:ok)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="150">
+        <li class="never" data-hits="" data-linenumber="131">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="151">
+        <li class="covered" data-hits="1" data-linenumber="132">
           <span class="hits">1</span>
           
-          <code class="ruby">      transactions = JSON.parse(response.body)</code>
+          <code class="ruby">      customers = JSON.parse(response.body)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="152">
+        <li class="covered" data-hits="1" data-linenumber="133">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(transactions.count).to eq(1)</code>
+          <code class="ruby">      expect(customers.count).to eq(1)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="153">
+        <li class="never" data-hits="" data-linenumber="134">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="135">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      customer = customers.first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="136">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(customer[&#39;first_name&#39;]).to eq(&quot;John&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="137">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="154">
+        <li class="never" data-hits="" data-linenumber="138">
           
           
           <code class="ruby">  end</code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="139">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="140">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  context &#39;#transactions&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="141">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;returns transactions&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="142">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      customer = Customer.create(first_name: &#39;John&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="143">
+          
+          
+          <code class="ruby">                                 last_name: &#39;McLaughlin&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="144">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      merchant = Merchant.create(name: &#39;Max the Merchant&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="145">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="146">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      invoice = Invoice.create(customer_id: customer.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="147">
+          
+          
+          <code class="ruby">                               merchant_id: merchant.id, status: &quot;paid&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="148">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      item = Item.create(name: &#39;Monkeys&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="149">
+          
+          
+          <code class="ruby">                         description: &#39;Be careful with these mischievous monkeys.&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="150">
+          
+          
+          <code class="ruby">                         unit_price: 67.99, merchant_id: merchant.id)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="151">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="152">
+          
+          
+          <code class="ruby">                                        invoice_id: invoice.id, item_id: item.id)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="153">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      transaction = Transaction.create(invoice_id: invoice.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="154">
+          
+          
+          <code class="ruby">                         result: &quot;success&quot;, credit_card_number: &quot;1234343&quot;)</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="155">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="156">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get :transactions, id: merchant.id, format: :json</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="157">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="158">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(response).to have_http_status(:ok)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="159">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="160">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      transactions = JSON.parse(response.body)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="161">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(transactions.count).to eq(1)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="162">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="163">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      transaction = transactions.first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="164">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(transaction[&#39;result&#39;]).to eq(&quot;success&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="165">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="166">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="167">
           
           
           <code class="ruby">end</code>
