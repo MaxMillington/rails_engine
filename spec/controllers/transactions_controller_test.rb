@@ -90,7 +90,7 @@ describe Api::V1::TransactionsController do
       invoice = JSON.parse(response.body)
 
       expect(invoice['status']).to eq('paid')
-      
+
     end
   end
 
