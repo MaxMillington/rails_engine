@@ -21,5 +21,5 @@ RSpec.describe Transaction, type: :model do
   it 'is returns the invoice' do
     expect(transaction.invoice).to eq(invoice)
   end
-  
+
 end

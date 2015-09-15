@@ -19,6 +19,14 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.where(find_params)
   end
 
+  def invoices
+    respond_with Customer.find_by(id: params[:id]).invoices
+  end
+
+  def transactions
+    respond_with Customer.find_by(id: params[:id]).transactions
+  end
+
   private
 
   def find_params
