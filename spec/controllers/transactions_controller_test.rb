@@ -71,4 +71,27 @@ describe Api::V1::TransactionsController do
     end
   end
 
+  context '#invoice' do
+    it 'returns invoice' do
+      merchant = Merchant.create(name: 'Max the Merchant')
+      customer = Customer.create(first_name: 'Wes',
+                                 last_name: 'Montgomery')
+      invoice = Invoice.create(status: "paid", customer_id: customer.id,
+                               merchant_id: merchant.id)
+      transaction = Transaction.create(invoice_id: invoice.id,
+                                       result: "success", credit_card_number: "1234343")
+
+      transaction2 = Transaction.create(invoice_id: invoice.id,
+                                        result: "fail", credit_card_number: "12343434")
+
+      get :invoice, id: transaction.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+      invoice = JSON.parse(response.body)
+
+      expect(invoice['status']).to eq('paid')
+      
+    end
+  end
+
 end
