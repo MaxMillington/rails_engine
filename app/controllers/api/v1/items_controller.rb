@@ -32,7 +32,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def best_day
-
+    respond_with Item.find_by(id: params[:id]).best_day
   end
 
   def most_items
