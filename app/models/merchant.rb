@@ -16,7 +16,12 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.most_items(params)
+    sorted_merchants = all.sort_by do |merchant|
+      merchant.invoices.successful.joins(:invoice_items)
+          .count(:quantity)
+    end
 
+    sorted_merchants.reverse[0...(params[:quantity]).to_i]
   end
 
   def self.most_merchant_revenue(params)

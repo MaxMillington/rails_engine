@@ -205,4 +205,45 @@ describe Api::V1::MerchantsController do
       expect(merchant['name']).to eq("Max the Merchant")
     end
   end
+
+  context '#most revenue' do
+    it 'returns the merchants with the most revenue' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+      merchant = Merchant.create(name: 'Max the Merchant')
+      merchant2 = Merchant.create(name: 'Max the Merchant2')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+      invoice2 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "paid")
+      invoice3 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant2.id, status: "paid")
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+      InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                         invoice_id: invoice.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                         invoice_id: invoice2.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                         invoice_id: invoice3.id, item_id: item.id)
+      Transaction.create(invoice_id: invoice.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice2.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice3.id,
+                         result: "success", credit_card_number: "1234343")
+
+      get :most_items, quantity: 2, format: :json
+
+      expect(response).to have_http_status(:ok)
+
+      merchants = JSON.parse(response.body)
+      expect(merchants.count).to eq(2)
+
+      merchant = merchants.first
+      expect(merchant['name']).to eq("Max the Merchant")
+    end
+  end
 end
