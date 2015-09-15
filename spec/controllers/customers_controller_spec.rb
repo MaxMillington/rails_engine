@@ -105,4 +105,31 @@ describe Api::V1::CustomersController do
     end
   end
 
+  context '#favorite merchant' do
+    it 'returns favorite merchant' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+      merchant2 = Merchant.create(name: 'Mitch the Merchant')
+      invoice = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "paid")
+      invoice2 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "paid")
+      invoice3 = Invoice.create(customer_id: customer.id, merchant_id: merchant2.id, status: "paid")
+      transaction = Transaction.create(invoice_id: invoice.id,
+                                       result: "success", credit_card_number: "1234343")
+      transaction2 = Transaction.create(invoice_id: invoice2.id,
+                                        result: "success", credit_card_number: "1234343")
+      transaction3 = Transaction.create(invoice_id: invoice3.id,
+                                        result: "success", credit_card_number: "1234343")
+
+      get :favorite_merchant, format: :json, id: customer.id
+
+      expect(response).to have_http_status(:ok)
+
+      merchant = JSON.parse(response.body)
+
+      expect(merchant['name']).to eq('Max the Merchant')
+    end
+  end
+
 end

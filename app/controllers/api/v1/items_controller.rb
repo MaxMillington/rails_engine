@@ -35,6 +35,14 @@ class Api::V1::ItemsController < ApplicationController
 
   end
 
+  def most_items
+
+  end
+
+  def most_revenue
+
+  end
+
   private
 
   def find_params

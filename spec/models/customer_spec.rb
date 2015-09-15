@@ -36,4 +36,20 @@ RSpec.describe Customer, type: :model do
                    merchant_id: merchant.id, status: "paid")
     expect(customer.invoices.first).to eq(invoice2)
   end
+
+  it 'returns favorite merchant' do
+    merchant = Merchant.create(name: 'Max the Merchant')
+    merchant2 = Merchant.create(name: 'Mitch the Merchant')
+    invoice = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "paid")
+    invoice2 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "paid")
+    invoice3 = Invoice.create(customer_id: customer.id, merchant_id: merchant2.id, status: "paid")
+    transaction = Transaction.create(invoice_id: invoice.id,
+                       result: "success", credit_card_number: "1234343")
+    transaction2 = Transaction.create(invoice_id: invoice2.id,
+                                     result: "success", credit_card_number: "1234343")
+    transaction3 = Transaction.create(invoice_id: invoice3.id,
+                                     result: "success", credit_card_number: "1234343")
+
+    expect(customer.favorite_merchant).to eq(merchant)
+  end
 end
