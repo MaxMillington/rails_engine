@@ -71,7 +71,7 @@ describe Api::V1::CustomersController do
       invoices = JSON.parse(response.body)
 
       expect(invoices.count).to eq(1)
-      
+
       invoice = invoices.first
       expect(invoice['status']).to eq('paid')
 
@@ -80,6 +80,27 @@ describe Api::V1::CustomersController do
 
   context '#transactions' do
     it 'returns transactions' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+
+      transaction = Transaction.create(invoice_id: invoice.id,
+                                       result: "success", credit_card_number: "1234343")
+
+      get :transactions, format: :json, id: customer.id
+
+      expect(response).to have_http_status(:ok)
+
+      transactions = JSON.parse(response.body)
+
+      expect(transactions.count).to eq(1)
+
+      transaction = transactions.first
+      expect(transaction['result']).to eq('success')
 
     end
   end

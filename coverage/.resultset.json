@@ -84,6 +84,27 @@
         null,
         1,
         1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
         null,
         null,
         null,
@@ -387,7 +408,7 @@
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -891,6 +912,7 @@
         null,
         1,
         1,
+        1,
         null
       ],
       "/Users/maryrose/module_3_projects/rails_engine/spec/models/invoice_item_spec.rb": [
@@ -1185,6 +1207,6 @@
         null
       ]
     },
-    "timestamp": 1442333432
+    "timestamp": 1442334080
   }
 }
