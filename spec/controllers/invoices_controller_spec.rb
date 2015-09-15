@@ -82,6 +82,7 @@ describe Api::V1::InvoicesController do
       get :transactions, id: invoice.id, format: :json
 
       expect(response).to have_http_status(:ok)
+      transactions = JSON.parse(response.body)
 
     end
   end
@@ -102,10 +103,10 @@ describe Api::V1::InvoicesController do
       transaction = Transaction.create(invoice_id: invoice.id,
                                        result: "success", credit_card_number: "1234343")
 
-      get :transactions, id: invoice.id, format: :json
+      get :invoice_items, id: invoice.id, format: :json
 
       expect(response).to have_http_status(:ok)
-
+      invoice_items = JSON.parse(response.body)
     end
   end
 
@@ -125,10 +126,10 @@ describe Api::V1::InvoicesController do
       transaction = Transaction.create(invoice_id: invoice.id,
                                        result: "success", credit_card_number: "1234343")
 
-      get :transactions, id: invoice.id, format: :json
+      get :items, id: invoice.id, format: :json
 
       expect(response).to have_http_status(:ok)
-
+      items = JSON.parse(response.body)
     end
   end
 
@@ -148,10 +149,12 @@ describe Api::V1::InvoicesController do
       transaction = Transaction.create(invoice_id: invoice.id,
                                        result: "success", credit_card_number: "1234343")
 
-      get :transactions, id: invoice.id, format: :json
+      get :customer, id: invoice.id, format: :json
 
       expect(response).to have_http_status(:ok)
+      customer = JSON.parse(response.body)
 
+      expect(customer['first_name']).to eq('John')
     end
   end
 
@@ -171,10 +174,11 @@ describe Api::V1::InvoicesController do
       transaction = Transaction.create(invoice_id: invoice.id,
                                        result: "success", credit_card_number: "1234343")
 
-      get :transactions, id: invoice.id, format: :json
+      get :merchant, id: invoice.id, format: :json
 
       expect(response).to have_http_status(:ok)
-
+      merchant = JSON.parse(response.body)
+      expect(merchant['name']).to eq('Max the Merchant')
     end
   end
 
