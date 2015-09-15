@@ -259,19 +259,6 @@
         1,
         1,
         1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
         1,
         1,
         null,
@@ -283,16 +270,42 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
         1,
         null,
         null,
-        null
-      ],
-      "/Users/maryrose/module_3_projects/rails_engine/app/helpers/application_helper.rb": [
+        null,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/maryrose/module_3_projects/rails_engine/app/controllers/api/v1/customers_controller.rb": [
@@ -717,7 +730,7 @@
         1,
         null,
         1,
-        0,
+        2,
         null,
         null,
         null
@@ -730,6 +743,11 @@
         null
       ],
       "/Users/maryrose/module_3_projects/rails_engine/app/models/customer.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
         1,
         null
       ],
@@ -756,6 +774,11 @@
       "/Users/maryrose/module_3_projects/rails_engine/app/models/invoice.rb": [
         1,
         1,
+        null,
+        1,
+        1,
+        1,
+        1,
         1,
         null
       ],
@@ -774,6 +797,10 @@
         null
       ],
       "/Users/maryrose/module_3_projects/rails_engine/app/models/merchant.rb": [
+        1,
+        1,
+        1,
+        1,
         1,
         null
       ],
@@ -800,6 +827,6 @@
         null
       ]
     },
-    "timestamp": 1442282219
+    "timestamp": 1442283895
   }
 }
