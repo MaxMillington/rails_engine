@@ -9,7 +9,7 @@ describe Api::V1::InvoiceItemsController do
       item = Item.create(name: 'Monkeys', description: 'Be very careful with these mischievous monkeys',
                          unit_price: 12.5, merchant_id: merchant.id)
       invoice = Invoice.create(status: "paid", customer_id: customer.id,
-                     merchant_id: merchant.id)
+                               merchant_id: merchant.id)
       invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
                                         invoice_id: invoice.id, item_id: item.id)
 
@@ -59,7 +59,7 @@ describe Api::V1::InvoiceItemsController do
                                         invoice_id: invoice.id, item_id: item.id)
 
       invoice_item2 = InvoiceItem.create(quantity: 5, unit_price: 55.99,
-                                        invoice_id: invoice.id, item_id: item.id)
+                                         invoice_id: invoice.id, item_id: item.id)
 
       get :find, id: invoice_item.id, format: :json
 
@@ -74,6 +74,58 @@ describe Api::V1::InvoiceItemsController do
       invoice_item2 = JSON.parse(response.body)
 
       expect(invoice_item2.first['unit_price']).to eq('55.99')
+    end
+  end
+
+  context '#invoice' do
+    it 'returns invoice' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: invoice.id, item_id: item.id)
+
+      get :invoice, id: invoice_item.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+      invoice = JSON.parse(response.body)
+
+      expect(invoice['status']).to eq("paid")
+
+    end
+  end
+
+  context '#item' do
+    it 'returns item' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: invoice.id, item_id: item.id)
+
+      get :item, id: invoice_item.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+      item = JSON.parse(response.body)
+
+      expect(item['name']).to eq("Monkeys")
+
     end
   end
 
