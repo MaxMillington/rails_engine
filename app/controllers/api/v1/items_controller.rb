@@ -1,21 +1,27 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    respond_with Customer.all
+    respond_with Item.all
   end
 
   def show
-    respond_with Customer.find_by(id: params[:id])
+    respond_with Item.find_by(id: params[:id])
   end
 
   def random
-    respond_with Customer.order("RANDOM()").first
+    respond_with Item.order("RANDOM()").first
   end
 
   def find
-    respond_with Customer.find_by(id: params[:id])
+    respond_with Item.find_by(find_params)
   end
 
   def find_all
-    respond_with Customer.where(id: params[:id])
+    respond_with Item.where(find_params)
+  end
+
+  private
+
+  def find_params
+    params.permit(:id, :name, :description, :unit_price, :merchant_id)
   end
 end

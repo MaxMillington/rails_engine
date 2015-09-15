@@ -19,4 +19,10 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.where(id: params[:id])
   end
 
+  private
+
+  def find_params
+    params.permit(:id, :name)
+  end
+
 end
