@@ -739,7 +739,41 @@
         1,
         null,
         1,
+        6,
+        null,
+        3,
         1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
         null
       ],
       "/Users/maryrose/module_3_projects/rails_engine/app/models/customer.rb": [
@@ -827,6 +861,6 @@
         null
       ]
     },
-    "timestamp": 1442283895
+    "timestamp": 1442284960
   }
 }
