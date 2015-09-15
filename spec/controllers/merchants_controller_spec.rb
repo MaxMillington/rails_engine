@@ -70,6 +70,9 @@ describe Api::V1::MerchantsController do
       get :items, id: merchant.id, format: :json
 
       expect(response).to have_http_status(:ok)
+
+      items = JSON.parse(response.body)
+      expect(items.count).to eq(1)
     end
   end
 
@@ -93,6 +96,9 @@ describe Api::V1::MerchantsController do
       get :invoices, id: merchant.id, format: :json
 
       expect(response).to have_http_status(:ok)
+
+      invoices = JSON.parse(response.body)
+      expect(invoices.count).to eq(1)
     end
   end
 
@@ -116,6 +122,9 @@ describe Api::V1::MerchantsController do
       get :customers, id: merchant.id, format: :json
 
       expect(response).to have_http_status(:ok)
+
+      customers = JSON.parse(response.body)
+      expect(customers.count).to eq(1)
     end
   end
 
@@ -138,6 +147,9 @@ describe Api::V1::MerchantsController do
       get :transactions, id: merchant.id, format: :json
 
       expect(response).to have_http_status(:ok)
+
+      transactions = JSON.parse(response.body)
+      expect(transactions.count).to eq(1)
     end
   end
 end
