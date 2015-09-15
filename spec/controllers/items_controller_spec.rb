@@ -234,4 +234,51 @@ describe Api::V1::ItemsController do
 
     end
   end
+
+  context '#most items' do
+    it 'returns top items by items sold' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+      item2 = Item.create(name: 'Monkeys2',
+                          description: 'Be careful with these mischievous monkeys.',
+                          unit_price: 67.99, merchant_id: merchant.id)
+      item3 = Item.create(name: 'Monkeys3',
+                          description: 'Be careful with these mischievous monkeys.',
+                          unit_price: 67.99, merchant_id: merchant.id)
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid", created_at: "2012-03-25 13:54:11" )
+      invoice2 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "paid", created_at: "2012-03-25 13:54:11")
+      invoice3 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "paid", created_at: "2012-02-25 13:54:11")
+      InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
+                         invoice_id: invoice.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: item2.unit_price,
+                         invoice_id: invoice2.id, item_id: item2.id)
+      InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
+                         invoice_id: invoice3.id, item_id: item.id)
+      Transaction.create(invoice_id: invoice.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice2.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice3.id,
+                         result: "success", credit_card_number: "1234343")
+
+      get :most_items, quantity: 2, format: :json
+      expect(response).to have_http_status(:ok)
+
+      most_itemers = JSON.parse(response.body)
+
+      expect(most_itemers.count).to eq(2)
+
+      expect(most_itemers.first['id']).to eq(item.id)
+
+    end
+  end
 end
