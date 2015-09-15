@@ -50,4 +50,94 @@ describe Api::V1::MerchantsController do
     end
   end
 
+  context '#items' do
+    it 'returns items' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: invoice.id, item_id: item.id)
+
+      get :items, id: merchant.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  context '#invoices' do
+    it 'returns invoices' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: invoice.id, item_id: item.id)
+
+      get :invoices, id: merchant.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  context '#customers' do
+    it 'returns customers' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: invoice.id, item_id: item.id)
+
+      get :customers, id: merchant.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  context '#transactions' do
+    it 'returns transactions' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: invoice.id, item_id: item.id)
+      transaction = Transaction.create(invoice_id: invoice.id,
+                         result: "success", credit_card_number: "1234343")
+
+      get :transactions, id: merchant.id, format: :json
+
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
