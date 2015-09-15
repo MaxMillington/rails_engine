@@ -83,7 +83,9 @@ describe Api::V1::InvoicesController do
 
       expect(response).to have_http_status(:ok)
       transactions = JSON.parse(response.body)
-
+      expect(transactions.size).to eq(1)
+      transaction = transactions.first
+      expect(transaction['result']).to eq('success')
     end
   end
 
@@ -107,6 +109,9 @@ describe Api::V1::InvoicesController do
 
       expect(response).to have_http_status(:ok)
       invoice_items = JSON.parse(response.body)
+      expect(invoice_items.size).to eq(1)
+      invoice_item = invoice_items.first
+      expect(invoice_item['quantity']).to eq(4)
     end
   end
 
@@ -130,6 +135,10 @@ describe Api::V1::InvoicesController do
 
       expect(response).to have_http_status(:ok)
       items = JSON.parse(response.body)
+
+      expect(items.size).to eq(1)
+      item = items.first
+      expect(item['name']).to eq('Monkeys')
     end
   end
 
