@@ -223,12 +223,14 @@ describe Api::V1::ItemsController do
       Transaction.create(invoice_id: invoice3.id,
                          result: "success", credit_card_number: "1234343")
 
-      get :most_revenue, format: :json
+      get :most_revenue, quantity: 2, format: :json
       expect(response).to have_http_status(:ok)
 
       most_revenuers = JSON.parse(response.body)
 
-      expect(best_day.first).to eq("2012-03-25 13:54:11")
+      expect(most_revenuers.count).to eq(2)
+
+      expect(most_revenuers.first['id']).to eq(item.id)
 
     end
   end
