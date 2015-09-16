@@ -7,9 +7,10 @@ class Item < ActiveRecord::Base
   has_many :invoices, through: :invoice_items
 
   def best_day
-    invoices.successful.group('invoices.created_at')
+    date = invoices.successful.group('invoices.created_at')
         .sum(('quantity * unit_price / 100')).
         sort_by {|x| x.last}.reverse.first.first
+    {:best_day => date}
   end
 
   def self.most_items(params)

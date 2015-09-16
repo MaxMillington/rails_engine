@@ -58,31 +58,5 @@ RSpec.describe Customer, type: :model do
 
     expect(invoice.transactions.first).to eq(transaction)
   end
-
-  it 'returns best day' do
-    item = Item.create(name: 'Monkeys',
-                             description: 'Be careful with these mischievous monkeys.',
-                             unit_price: 67.99, merchant_id: merchant.id)
-    invoice = Invoice.create(customer_id: customer.id,
-                             merchant_id: merchant.id, status: "paid", created_at: "2012-03-25 13:54:11" )
-    invoice2 = Invoice.create(customer_id: customer.id,
-                             merchant_id: merchant.id, status: "paid", created_at: "2012-03-25 13:54:11")
-    invoice3 = Invoice.create(customer_id: customer.id,
-                             merchant_id: merchant.id, status: "paid", created_at: "2012-02-25 13:54:11")
-    InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
-                                      invoice_id: invoice.id, item_id: item.id)
-    InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
-                                      invoice_id: invoice2.id, item_id: item.id)
-    InvoiceItem.create(quantity: 4, unit_price: item.unit_price,
-                                      invoice_id: invoice3.id, item_id: item.id)
-    Transaction.create(invoice_id: invoice.id,
-                       result: "success", credit_card_number: "1234343")
-    Transaction.create(invoice_id: invoice2.id,
-                       result: "success", credit_card_number: "1234343")
-    Transaction.create(invoice_id: invoice3.id,
-                       result: "success", credit_card_number: "1234343")
-
-    expect(item.best_day).to eq("2012-03-25 13:54:11")
-
-  end
+  
 end
