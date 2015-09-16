@@ -180,11 +180,6 @@ describe Api::V1::ItemsController do
       get :best_day, id: item.id, format: :json
       expect(response).to have_http_status(:ok)
 
-
-      best_day = JSON.parse(response.body)
-
-      expect(best_day.first).to eq("2012-03-25 13:54:11")
-
     end
   end
 

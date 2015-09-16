@@ -346,7 +346,7 @@ describe Api::V1::MerchantsController do
       Transaction.create(invoice_id: invoice2.id,
                          result: "success", credit_card_number: "1234343")
       Transaction.create(invoice_id: invoice3.id,
-                         result: "fail", credit_card_number: "1234343")
+                         result: "failed", credit_card_number: "1234343")
 
       get :customers_with_pending_invoices,
           id: merchant.id,

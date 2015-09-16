@@ -26,4 +26,8 @@ class Invoice < ActiveRecord::Base
     Customer.where(id: ids)
   end
 
+  def self.favorite_customer
+    self.joins(:customer).group(:customer_id).count.sort_by {|key, value| [value, key]}.reverse.first.first
+  end
+
 end

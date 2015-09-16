@@ -51,13 +51,15 @@ class Merchant < ActiveRecord::Base
   end
 
   def favorite_customer
-    customer_ids = invoices.successful.group(:customer_id).
-        count(:customer_id).sort_by{|customer_quantity_pair|
-      customer_quantity_pair.last}.reverse.first
+    Customer.where(id: success.favorite_customer)
 
-    customer_ids.map do |customer_id|
-      Customer.find_by(id: customer_id)
-    end
+    # customer_ids = invoices.successful.group(:customer_id).
+    #     sum(:customer_id).sort_by{|customer_quantity_pair|
+    #   customer_quantity_pair.last}.reverse.first
+    #
+    # customer_ids.map do |customer_id|
+    #   Customer.find_by(id: customer_id)
+    # end
   end
 
   def customers_with_pending_invoices

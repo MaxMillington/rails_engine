@@ -14,7 +14,7 @@ class Item < ActiveRecord::Base
 
   def self.most_items(params)
     items_ids = Invoice.successful.joins(:items).
-        group(:item_id).count(:quantity).
+        group(:item_id).sum(:quantity).
         sort_by {|item_quantity_pair| item_quantity_pair.last}.
         reverse[0...(params[:quantity].to_i)].map(&:first)
 
