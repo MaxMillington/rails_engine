@@ -284,4 +284,47 @@ describe Api::V1::MerchantsController do
 
     end
   end
+
+  context '#favorite customer' do
+    it 'returns favorite customer/s' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+      customer2 = Customer.create(first_name: 'Charles',
+                                 last_name: 'Mingus')
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "paid")
+      invoice2 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "paid")
+      invoice3 = Invoice.create(customer_id: customer2.id,
+                                merchant_id: merchant.id, status: "paid")
+      item = Item.create(name: 'Monkeys',
+                         description: 'Be careful with these mischievous monkeys.',
+                         unit_price: 67.99, merchant_id: merchant.id)
+      InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                         invoice_id: invoice.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                         invoice_id: invoice2.id, item_id: item.id)
+      InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                         invoice_id: invoice3.id, item_id: item.id)
+      Transaction.create(invoice_id: invoice.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice2.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice3.id,
+                         result: "success", credit_card_number: "1234343")
+
+      get :favorite_customer,
+          id: merchant.id,
+          format: :json
+
+      expect(response).to have_http_status(:ok)
+
+      customer_array = JSON.parse(response.body)
+
+      expect(customer_array.first['first_name']).to eq('John')
+
+    end
+  end
 end
