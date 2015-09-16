@@ -33,8 +33,17 @@ class Merchant < ActiveRecord::Base
     invoices.successful
   end
 
-  def revenue
-    success.total_revenue(success.pluck(:id))
+  def revenue(params)
+    if params[:date]
+      revenue_for_date(params[:date])
+    else
+      success.total_revenue(success.pluck(:id))
+    end
+  end
+
+  def revenue_for_date(date)
+    invoices.successful.where("invoices.created_at = '#{date}'")
+        .joins(:invoice_items).sum('quantity * unit_price')
   end
 
   def favorite_customer
