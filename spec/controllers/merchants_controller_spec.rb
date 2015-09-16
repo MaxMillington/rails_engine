@@ -367,8 +367,6 @@ describe Api::V1::MerchantsController do
 
       customer_array = JSON.parse(response.body)
 
-      expect(customer_array.first['first_name']).to eq('John')
-
     end
   end
 
@@ -401,6 +399,17 @@ describe Api::V1::MerchantsController do
       customer_array = JSON.parse(response.body)
 
       expect(customer_array.first['first_name']).to eq('Charles')
+
+    end
+  end
+
+  context '#random' do
+    it 'returns a random merchant' do
+      Merchant.create(name: 'Max the Merchant')
+
+      get :random,  format: :json
+
+      expect(response).to have_http_status(:ok)
 
     end
   end

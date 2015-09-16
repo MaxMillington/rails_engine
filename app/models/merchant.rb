@@ -51,7 +51,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def favorite_customer
-    Customer.where(id: success.favorite_customer)
+    Customer.find_by(id: success.favorite_customer)
 
     # customer_ids = invoices.successful.group(:customer_id).
     #     count(:customer_id).sort_by{|customer_quantity_pair|

@@ -132,4 +132,16 @@ describe Api::V1::CustomersController do
     end
   end
 
+  context '#random' do
+    it 'returns a random customer' do
+      customer = Customer.create(first_name: 'Pat',
+                                 last_name: 'Martino')
+
+      get :random,  format: :json
+
+      expect(response).to have_http_status(:ok)
+
+    end
+  end
+
 end

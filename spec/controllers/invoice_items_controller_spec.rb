@@ -129,4 +129,16 @@ describe Api::V1::InvoiceItemsController do
     end
   end
 
+  context '#random' do
+    it 'returns a random ii' do
+      invoice_item = InvoiceItem.create(quantity: 4, unit_price: 54.99,
+                                        invoice_id: nil, item_id: nil)
+
+      get :random,  format: :json
+
+      expect(response).to have_http_status(:ok)
+
+    end
+  end
+
 end

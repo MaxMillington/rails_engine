@@ -191,4 +191,14 @@ describe Api::V1::InvoicesController do
     end
   end
 
+  context '#random' do
+    it 'returns a random invoice' do
+
+      get :random,  format: :json
+
+      expect(response).to have_http_status(:ok)
+
+    end
+  end
+
 end
