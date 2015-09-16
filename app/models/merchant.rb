@@ -44,7 +44,13 @@ class Merchant < ActiveRecord::Base
   end
 
   def customers_with_pending_invoices
+    customer_ids = (invoices - invoices.successful).map do |invoice|
+      invoice.customer_id
+    end
 
+    customer_ids.map do |customer_id|
+      Customer.find_by(id: customer_id)
+    end
   end
 
 end

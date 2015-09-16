@@ -327,4 +327,39 @@ describe Api::V1::MerchantsController do
 
     end
   end
+
+  context '#customers with pending invoices' do
+    it 'returns customers with unpaid invoices' do
+      customer = Customer.create(first_name: 'John',
+                                 last_name: 'McLaughlin')
+      customer2 = Customer.create(first_name: 'Charles',
+                                  last_name: 'Mingus')
+      merchant = Merchant.create(name: 'Max the Merchant')
+
+      invoice = Invoice.create(customer_id: customer.id,
+                               merchant_id: merchant.id, status: "shipped")
+      invoice2 = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id, status: "shipped")
+      invoice3 = Invoice.create(customer_id: customer2.id,
+                                merchant_id: merchant.id, status: "shipped")
+      Transaction.create(invoice_id: invoice.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice2.id,
+                         result: "success", credit_card_number: "1234343")
+      Transaction.create(invoice_id: invoice3.id,
+                         result: "fail", credit_card_number: "1234343")
+
+      get :customers_with_pending_invoices,
+          id: merchant.id,
+          format: :json
+
+      expect(response).to have_http_status(:ok)
+
+      customer_array = JSON.parse(response.body)
+
+      expect(customer_array.first['first_name']).to eq('Charles')
+
+    end
+  end
+
 end
