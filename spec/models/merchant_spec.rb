@@ -51,4 +51,5 @@ RSpec.describe Merchant, type: :model do
 
     expect(merchant.transactions.first).to eq(transaction)
   end
+
 end
