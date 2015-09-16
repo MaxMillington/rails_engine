@@ -335,7 +335,6 @@ describe Api::V1::MerchantsController do
       customer2 = Customer.create(first_name: 'Charles',
                                   last_name: 'Mingus')
       merchant = Merchant.create(name: 'Max the Merchant')
-
       invoice = Invoice.create(customer_id: customer.id,
                                merchant_id: merchant.id, status: "shipped")
       invoice2 = Invoice.create(customer_id: customer.id,

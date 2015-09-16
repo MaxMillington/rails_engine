@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
 
   def best_day
     invoices.successful.group('invoices.created_at')
-        .sum('quantity * unit_price').
+        .sum(('quantity * unit_price / 100')).
         sort_by {|x| x.last}.reverse.first.first
   end
 
@@ -25,7 +25,7 @@ class Item < ActiveRecord::Base
 
   def self.most_revenue(params)
     items_ids = Invoice.successful.joins(:items).group(:item_id).
-        sum('quantity * invoice_items.unit_price').
+        sum(('quantity * invoice_items.unit_price / 100')).
         sort_by {|item_revenue_pair| item_revenue_pair.last}
         .reverse[0...(params[:quantity].to_i)].map(&:first)
 

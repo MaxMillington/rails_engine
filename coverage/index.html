@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-15T20:19:52-06:00">2015-09-15T20:19:52-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-15T20:56:20-06:00">2015-09-15T20:56:20-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>37</b> files in total.
-    <b>996</b> relevant lines. 
-    <span class="green"><b>989</b> lines covered</span> and
+    <b>998</b> relevant lines. 
+    <span class="green"><b>991</b> lines covered</span> and
     <span class="red"><b>7</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -144,8 +144,8 @@
         <td class="strong"><a href="#b56f8ada89c3e419f095103067e7990ef1e1a259" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>37</td>
-        <td>20</td>
-        <td>20</td>
+        <td>22</td>
+        <td>22</td>
         <td>0</td>
         <td>1.5</td>
       </tr>
@@ -173,7 +173,7 @@
       <tr>
         <td class="strong"><a href="#6f15f2669bf57a78a80ba80c80a208f6917debd9" class="src_link" title="config/application.rb">config/application.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>35</td>
+        <td>20</td>
         <td>13</td>
         <td>13</td>
         <td>0</td>
@@ -343,7 +343,7 @@
       <tr>
         <td class="strong"><a href="#a1df3745d3e057a1c8e629e8c44035e62b0cef1e" class="src_link" title="spec/controllers/merchants_controller_spec.rb">spec/controllers/merchants_controller_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>365</td>
+        <td>364</td>
         <td>176</td>
         <td>176</td>
         <td>0</td>
@@ -669,7 +669,7 @@
         <li class="covered" data-hits="2" data-linenumber="37">
           <span class="hits">2</span>
           
-          <code class="ruby">    params.permit(:id, :first_name, :last_name)</code>
+          <code class="ruby">    params.permit(:id, :first_name, :last_name, :created_at, :updated_at)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
@@ -897,7 +897,7 @@
         <li class="covered" data-hits="2" data-linenumber="33">
           <span class="hits">2</span>
           
-          <code class="ruby">    params.permit(:id, :invoice_id, :item_id, :quantity, :unit_price)</code>
+          <code class="ruby">    params.permit(:id, :invoice_id, :item_id, :quantity, :unit_price, :created_at, :updated_at)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
@@ -1203,7 +1203,7 @@
         <li class="covered" data-hits="2" data-linenumber="45">
           <span class="hits">2</span>
           
-          <code class="ruby">    params.permit(:id, :customer_id, :merchant_id, :status)</code>
+          <code class="ruby">    params.permit(:id, :customer_id, :merchant_id, :status, :created_at, :updated_at)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
@@ -1533,7 +1533,7 @@
         <li class="covered" data-hits="2" data-linenumber="49">
           <span class="hits">2</span>
           
-          <code class="ruby">    params.permit(:id, :name, :description, :unit_price, :merchant_id)</code>
+          <code class="ruby">    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
@@ -1863,13 +1863,13 @@
         <li class="covered" data-hits="1" data-linenumber="50">
           <span class="hits">1</span>
           
-          <code class="ruby">  def revenue(date)</code>
+          <code class="ruby">  def revenue</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="51">
           
           
-          <code class="ruby">    respond_with Merchant.find_by(id: params[:id]).revenue(date)</code>
+          <code class="ruby">    respond_with Merchant.find_by(id: params[:id]).revenue(params)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
@@ -1953,7 +1953,7 @@
         <li class="covered" data-hits="2" data-linenumber="65">
           <span class="hits">2</span>
           
-          <code class="ruby">    params.permit(:id, :name)</code>
+          <code class="ruby">    params.permit(:id, :name, :created_at, :updated_at)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="66">
@@ -2307,8 +2307,8 @@
     <h3>app/models/item.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>20</b> relevant lines. 
-      <span class="green"><b>20</b> lines covered</span> and
+      <b>22</b> relevant lines. 
+      <span class="green"><b>22</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2376,10 +2376,10 @@
           <code class="ruby">    invoices.successful.group(&#39;invoices.created_at&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="covered" data-hits="2" data-linenumber="11">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">        .sum(&#39;quantity * unit_price&#39;).</code>
+          <code class="ruby">        .sum((&#39;quantity * unit_price / 100&#39;)).</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="12">
@@ -2478,10 +2478,10 @@
           <code class="ruby">    items_ids = Invoice.successful.joins(:items).group(:item_id).</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        sum(&#39;quantity * invoice_items.unit_price&#39;).</code>
+          <code class="ruby">        sum((&#39;quantity * invoice_items.unit_price / 100&#39;)).</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="29">
@@ -2727,7 +2727,7 @@
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">        joins(:invoice_items).sum(&#39;quantity * unit_price&#39;)</code>
+          <code class="ruby">        joins(:invoice_items).sum((&#39;quantity * unit_price / 100&#39;))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
@@ -2745,7 +2745,7 @@
         <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
-          <code class="ruby">  def revenue(date)</code>
+          <code class="ruby">  def revenue(params)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
@@ -2967,7 +2967,7 @@
         <li class="never" data-hits="" data-linenumber="4">
           
           
-          <code class="ruby"># Pick the frameworks you want:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="5">
@@ -3015,31 +3015,31 @@
         <li class="never" data-hits="" data-linenumber="12">
           
           
-          <code class="ruby"># require &quot;rails/test_unit/railtie&quot;</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">Bundler.require(*Rails.groups)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
           
           
-          <code class="ruby"># Require the gems listed in Gemfile, including any gems</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"># you&#39;ve limited to :test, :development, or :production.</code>
+          <code class="ruby">module RailsEngine</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">Bundler.require(*Rails.groups)</code>
+          <code class="ruby">  class Application &lt; Rails::Application</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
@@ -3051,106 +3051,16 @@
         <li class="covered" data-hits="1" data-linenumber="18">
           <span class="hits">1</span>
           
-          <code class="ruby">module RailsEngine</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  class Application &lt; Rails::Application</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">    # Settings in config/environments/* take precedence over those specified here.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
-          
-          
-          <code class="ruby">    # Application configuration should go into files in config/initializers</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby">    # -- all .rb files in that directory are automatically loaded.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="23">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="24">
-          
-          
-          <code class="ruby">    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">    # Run &quot;rake -D time&quot; for a list of tasks for finding time zone names. Default is UTC.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby">    # config.time_zone = &#39;Central Time (US &amp; Canada)&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="27">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="28">
-          
-          
-          <code class="ruby">    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
-          
-          
-          <code class="ruby">    # config.i18n.load_path += Dir[Rails.root.join(&#39;my&#39;, &#39;locales&#39;, &#39;*.{rb,yml}&#39;).to_s]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby">    # config.i18n.default_locale = :de</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="32">
-          
-          
-          <code class="ruby">    # Do not swallow errors in after_commit/after_rollback callbacks.</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="33">
-          <span class="hits">1</span>
-          
           <code class="ruby">    config.active_record.raise_in_transactional_callbacks = true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">end</code>
@@ -4089,7 +3999,7 @@
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;customers/:id/invoi  ces&#39;,             to: &#39;customers#invoices&#39;</code>
+          <code class="ruby">      get &#39;customers/:id/invoices&#39;,             to: &#39;customers#invoices&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="9">
@@ -10998,169 +10908,163 @@
           <code class="ruby">      merchant = Merchant.create(name: &#39;Max the Merchant&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="338">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="339">
+        <li class="covered" data-hits="1" data-linenumber="338">
           <span class="hits">1</span>
           
           <code class="ruby">      invoice = Invoice.create(customer_id: customer.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="340">
+        <li class="never" data-hits="" data-linenumber="339">
           
           
           <code class="ruby">                               merchant_id: merchant.id, status: &quot;shipped&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="341">
+        <li class="covered" data-hits="1" data-linenumber="340">
           <span class="hits">1</span>
           
           <code class="ruby">      invoice2 = Invoice.create(customer_id: customer.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="342">
+        <li class="never" data-hits="" data-linenumber="341">
           
           
           <code class="ruby">                                merchant_id: merchant.id, status: &quot;shipped&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="343">
+        <li class="covered" data-hits="1" data-linenumber="342">
           <span class="hits">1</span>
           
           <code class="ruby">      invoice3 = Invoice.create(customer_id: customer2.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="344">
+        <li class="never" data-hits="" data-linenumber="343">
           
           
           <code class="ruby">                                merchant_id: merchant.id, status: &quot;shipped&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="345">
+        <li class="covered" data-hits="1" data-linenumber="344">
           <span class="hits">1</span>
           
           <code class="ruby">      Transaction.create(invoice_id: invoice.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="346">
+        <li class="never" data-hits="" data-linenumber="345">
           
           
           <code class="ruby">                         result: &quot;success&quot;, credit_card_number: &quot;1234343&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="347">
+        <li class="covered" data-hits="1" data-linenumber="346">
           <span class="hits">1</span>
           
           <code class="ruby">      Transaction.create(invoice_id: invoice2.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="348">
+        <li class="never" data-hits="" data-linenumber="347">
           
           
           <code class="ruby">                         result: &quot;success&quot;, credit_card_number: &quot;1234343&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="349">
+        <li class="covered" data-hits="1" data-linenumber="348">
           <span class="hits">1</span>
           
           <code class="ruby">      Transaction.create(invoice_id: invoice3.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="350">
+        <li class="never" data-hits="" data-linenumber="349">
           
           
           <code class="ruby">                         result: &quot;fail&quot;, credit_card_number: &quot;1234343&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="351">
+        <li class="never" data-hits="" data-linenumber="350">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="352">
+        <li class="covered" data-hits="1" data-linenumber="351">
           <span class="hits">1</span>
           
           <code class="ruby">      get :customers_with_pending_invoices,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="353">
+        <li class="never" data-hits="" data-linenumber="352">
           
           
           <code class="ruby">          id: merchant.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="354">
+        <li class="never" data-hits="" data-linenumber="353">
           
           
           <code class="ruby">          format: :json</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="355">
+        <li class="never" data-hits="" data-linenumber="354">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="356">
+        <li class="covered" data-hits="1" data-linenumber="355">
           <span class="hits">1</span>
           
           <code class="ruby">      expect(response).to have_http_status(:ok)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="357">
+        <li class="never" data-hits="" data-linenumber="356">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="358">
+        <li class="covered" data-hits="1" data-linenumber="357">
           <span class="hits">1</span>
           
           <code class="ruby">      customer_array = JSON.parse(response.body)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="359">
+        <li class="never" data-hits="" data-linenumber="358">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="360">
+        <li class="covered" data-hits="1" data-linenumber="359">
           <span class="hits">1</span>
           
           <code class="ruby">      expect(customer_array.first[&#39;first_name&#39;]).to eq(&#39;Charles&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="361">
+        <li class="never" data-hits="" data-linenumber="360">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="362">
+        <li class="never" data-hits="" data-linenumber="361">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="363">
+        <li class="never" data-hits="" data-linenumber="362">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="364">
+        <li class="never" data-hits="" data-linenumber="363">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="365">
+        <li class="never" data-hits="" data-linenumber="364">
           
           
           <code class="ruby">end</code>
