@@ -24,8 +24,9 @@ class Merchant < ActiveRecord::Base
     sorted_merchants.reverse[0...(params[:quantity]).to_i]
   end
 
-  def self.most_merchant_revenue(params)
-
+  def self.merchant_revenue_by_date(params)
+    Invoice.successful.where("invoices.created_at = '#{params[:date]}'").
+        joins(:invoice_items).sum('quantity * unit_price')
   end
 
   def revenue(date)

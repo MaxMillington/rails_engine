@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get 'merchants/find_all',                             to: 'merchants#find_all'
       get 'merchants/most_revenue',                         to: 'merchants#most_revenue'
       get 'merchants/most_items',                           to: 'merchants#most_items'
-      get 'merchants/revenue',                              to: 'merchants#total_merchant_revenue'
+      get 'merchants/revenue',                              to: 'merchants#total_merchant_revenue_by_date'
       get 'merchants/:id/items',                            to: 'merchants#items'
       get 'merchants/:id/customers',                        to: 'merchants#customers'
       get 'merchants/:id/transactions',                     to: 'merchants#transactions'

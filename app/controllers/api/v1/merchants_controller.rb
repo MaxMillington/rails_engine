@@ -43,8 +43,8 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.most_items(params)
   end
 
-  def total_merchant_revenue
-    respond_with Merchant.total_merchant_revenue(params)
+  def total_merchant_revenue_by_date
+    respond_with Merchant.merchant_revenue_by_date(params)
   end
 
   def revenue(date)
