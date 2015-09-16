@@ -17,4 +17,13 @@ class Invoice < ActiveRecord::Base
         map {|invoice_item| invoice_item.quantity * invoice_item.unit_price}.
         reduce(:+))}
   end
+
+  def self.failed
+    joins(:transactions).where(:transactions => {result: "failed"})
+  end
+
+  def self.pending_invoices(ids)
+    Customer.where(id: ids)
+  end
+
 end

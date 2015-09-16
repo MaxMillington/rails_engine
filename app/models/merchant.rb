@@ -25,12 +25,16 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.merchant_revenue_by_date(params)
-    Invoice.successful.where("invoices.created_at = '#{params[:date]}'").
-        joins(:invoice_items).sum(('quantity * unit_price'))
+    {total_revenue: "%.2f" % Invoice.successful.where("invoices.created_at = '#{params[:date]}'").
+        joins(:invoice_items).sum(('quantity * unit_price'))}
   end
 
   def success
     invoices.successful
+  end
+
+  def fail
+    invoices.failed
   end
 
   def revenue(params)
@@ -42,8 +46,8 @@ class Merchant < ActiveRecord::Base
   end
 
   def revenue_for_date(date)
-    invoices.successful.where("invoices.created_at = '#{date}'")
-        .joins(:invoice_items).sum('quantity * unit_price')
+    {revenue: "%.2f" % invoices.successful.where("invoices.created_at = '#{date}'")
+        .joins(:invoice_items).sum('quantity * unit_price')}
   end
 
   def favorite_customer
@@ -57,13 +61,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def customers_with_pending_invoices
-    customer_ids = (invoices - invoices.successful).map do |invoice|
-      invoice.customer_id
-    end
-
-    customer_ids.map do |customer_id|
-      Customer.find_by(id: customer_id)
-    end
+    self.fail.pending_invoices(fail.pluck(:customer_id))
   end
 
 end
