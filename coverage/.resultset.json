@@ -1817,6 +1817,11 @@
         17,
         null,
         null,
+        1,
+        null,
+        0,
+        0,
+        null,
         null
       ],
       "/Users/maryrose/module_3_projects/rails_engine/spec/models/item_spec.rb": [
@@ -1998,7 +2003,11 @@
         null,
         null,
         1,
+        0,
         null,
+        null,
+        1,
+        0,
         null,
         null,
         1,
@@ -2095,6 +2104,6 @@
         null
       ]
     },
-    "timestamp": 1442372180
+    "timestamp": 1442419395
   }
 }

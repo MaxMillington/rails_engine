@@ -1,4 +1,5 @@
 require 'csv'
+require 'bigdecimal'
 
 namespace :csv do
   desc "parse CSV data"
@@ -21,9 +22,15 @@ namespace :csv do
 
   task items: :environment do
     csv_text = File.read('./public/CSV/items.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, :headers => true, header_converters: :symbol)
     csv.each do |row|
-      Customer.create(row.to_h)
+      Item.create(id: row[:id],
+                  name: row[:name],
+                  description: row[:description],
+                  unit_price: BigDecimal.new(row[:unit_price].insert(-3, '.')),
+                  merchant_id: row[:merchant_id],
+                  created_at: row[:created_at],
+                  updated_at: row[:updated_at])
     end
   end
 
@@ -37,9 +44,15 @@ namespace :csv do
 
   task invoice_items: :environment do
     csv_text = File.read('./public/CSV/invoice_items.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, :headers => true, header_converters: :symbol)
     csv.each do |row|
-      InvoiceItem.create(row.to_h)
+      InvoiceItem.create(id: row[:id],
+                         quantity: row[:quantity],
+                         unit_price: BigDecimal.new(row[:unit_price].insert(-3, '.')),
+                         item_id: row[:item_id],
+                         invoice_id: row[:invoice_id],
+                         created_at: row[:created_at],
+                         updated_at: row[:updated_at])
     end
   end
 

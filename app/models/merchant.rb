@@ -29,8 +29,12 @@ class Merchant < ActiveRecord::Base
         joins(:invoice_items).sum(('quantity * unit_price / 100'))
   end
 
-  def revenue(params)
+  def success
+    invoices.successful
+  end
 
+  def revenue
+    success.total_revenue(success.pluck(:id))
   end
 
   def favorite_customer
