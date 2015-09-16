@@ -15,6 +15,6 @@ class Invoice < ActiveRecord::Base
   def self.total_revenue(ids)
     {revenue: "%.2f" % (InvoiceItem.where(invoice_id: ids).
         map {|invoice_item| invoice_item.quantity * invoice_item.unit_price}.
-        reduce(:+)/100)}
+        reduce(:+))}
   end
 end
